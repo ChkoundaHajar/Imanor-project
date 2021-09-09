@@ -5,8 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class roles extends Model
+class agent extends Model
 {
     use HasFactory;
-    protected $fillable =['Code','Departement','Sigle','Chef de departement','Id','Entite parent'];
+    protected $fillable =['id','nom','prenom','email','mdp', 'departement', 'role'];
 }

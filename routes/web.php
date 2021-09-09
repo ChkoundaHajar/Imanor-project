@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('employes','App\Http\Controllers\agentsController');
-Route::resource('employes','App\Http\Controllers\courrierController');
-Route::resource('employes','App\Http\Controllers\rolesController');
+Route::resource('agent','App\Http\Controllers\agentController');
+Route::resource('courrier','App\Http\Controllers\courrierController');
+Route::resource('departement','App\Http\Controllers\departementController');

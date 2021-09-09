@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\agents;
+use App\agent;
 use Illuminate\Http\Request;
 
-class agentsController extends Controller
+class agentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class agentsController extends Controller
      */
     public function index()
     {
-        $agents=agents::latest()->paginate(5);
-        return view('agents.index',compact('agents'))
+        $agent=agent::latest()->paginate(5);
+        return view('agent.index',compact('agent'))
         ->with('i',(request()->input('page',1)-1)*5);
     
     }
@@ -27,7 +27,7 @@ class agentsController extends Controller
      */
     public function create()
     {
-        return view('agents.create');
+        return view('agent.create');
     }
 
     /**
@@ -40,69 +40,69 @@ class agentsController extends Controller
     {
         $request->validate([
             'id'=> 'required',
-            'Nom'=> 'required',
-            'Prenom'=> 'required',
-            'E-mail'=> 'required',
-            'Mot de passe'=> 'required',
-            'Code'=> 'required',
-            'Profil'=> 'required',
+            'nom'=> 'required',
+            'prenom'=> 'required',
+            'email'=> 'required',
+            'mdp'=> 'required',
+            'departement'=> 'required',
+            'role'=> 'required',
         ]);
-        agents::create($request->all());
+        agent::create($request->all());
 
-        return redirect()->route('agents.index') ->with('success','agents created successfully');
+        return redirect()->route('agent.index') ->with('success','agent created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\agents  $agents
+     * @param  \App\agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function show(agents $agents)
+    public function show(agent $agent)
     {
-        return view('agents.show', compact('agents'));
+        return view('agent.show', compact('agent'));
     }
 
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\agents  $agents
+     * @param  \App\agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function edit(agents $agents)
+    public function edit(agent $agent)
     {
-        return view ('agents.edit', compact('agents'));
+        return view ('agent.edit', compact('agent'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\agents  $agents
+     * @param  \App\agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, agents $agents)
+    public function update(Request $request, agent $agent)
     {
         $request->validate( [
 
         ]);
-        $agents->update($request->all());
+        $agent->update($request->all());
 
-        return redirect()->route(agents.index)
-        ->with('success', 'agents updated successfully');
+        return redirect()->route(agent.index)
+        ->with('success', 'agent updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\agents  $agents
+     * @param  \App\agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(agents $agents)
+    public function destroy(agent $agent)
     {
-        $agents->delete();
-        return redirect()->route('agents.index')
+        $agent->delete();
+        return redirect()->route('agent.index')
         ->with('success','agent deleted successfully');
     }
 }

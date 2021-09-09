@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class courrier extends Model
 {
     use HasFactory;
-    protected $fillable =['client','date','statut','fileUrl'];
+    protected $fillable =['id','client','gate','statut', 'fileUrl', 'departement_affecte', 'agent_affecte'];
 }

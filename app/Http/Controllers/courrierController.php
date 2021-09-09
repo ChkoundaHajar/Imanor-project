@@ -38,10 +38,14 @@ class courrierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'id'=> 'required',
             'client'=> 'required',
             'date'=> 'required',
             'statut'=> 'required',
             'fileUrl'=> 'required',
+            'departement_affecte '=> 'required',
+            'agent_affecte'=> 'required',
+                  
             
         ]);
         courrier::create($request->all());
